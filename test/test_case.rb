@@ -25,7 +25,7 @@ class TestCase < Test::Unit::TestCase
 
 	def testDiagnoseCase
 		# assign the case
-		@aCase.assign("Dr. Fine")
+		@aCase.assign("Dr. Howard")
 
 		# provide a diagnosis
 		@aCase.diagnose("Patient has a bad cold.")
@@ -50,7 +50,7 @@ class TestCase < Test::Unit::TestCase
 
 	def testCloseCase
 		# assign the case
-		@aCase.assign("Dr. Fine")
+		@aCase.assign("Dr. Howard")
 
 		# provide a diagnosis
 		@aCase.diagnose("Patient has a bad cold.")
@@ -60,5 +60,22 @@ class TestCase < Test::Unit::TestCase
 
 		# verify that the case is in the 'complete' state
 		assert(@aCase.state.instance_of?(ClosedState))
+	end
+
+	def testReopenFromClosed
+		# assign the case
+		@aCase.assign("Dr. Fine")
+
+		# provide a diagnosis
+		@aCase.diagnose("Patient has a bad cold.")
+
+		# close the case
+		@aCase.close
+
+		# reopen
+		@aCase.reopen
+
+		# verify that the case is in the 'complete' state
+		assert(@aCase.state.instance_of?(AssignedState))
 	end
 end
