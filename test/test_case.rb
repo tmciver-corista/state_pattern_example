@@ -32,4 +32,18 @@ class TestCase < Test::Unit::TestCase
 		# verify that the case is in the 'complete' state
 		assert(@aCase.state.instance_of?(DiagnosedState))
 	end
+
+	def testReopenFromDiagnosed
+		# assign the case
+		@aCase.assign("Dr. Fine")
+
+		# provide a diagnosis
+		@aCase.diagnose("Patient has a bad cold.")
+
+		# reopen
+		@aCase.reopen
+
+		# verify that the case is in the 'complete' state
+		assert(@aCase.state.instance_of?(AssignedState))
+	end
 end
