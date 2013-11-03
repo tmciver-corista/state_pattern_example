@@ -3,6 +3,7 @@ require_relative '../lib/pathology_case'
 require_relative '../lib/pending_state'
 require_relative '../lib/diagnosed_state'
 require_relative '../lib/closed_state'
+require_relative '../lib/illegal_state_transition_exception'
 
 class TestCase < Test::Unit::TestCase
 	def setup
@@ -77,5 +78,10 @@ class TestCase < Test::Unit::TestCase
 
 		# verify that the case is in the 'complete' state
 		assert(@aCase.state.instance_of?(AssignedState))
+	end
+
+	def testPendingToDiagnosedException
+		# try to diagnose the case from the 'pending' state
+		assert_raises(IllegalStateTransitionException) { @aCase.diagnose("Patient has a bad cold.") }
 	end
 end
