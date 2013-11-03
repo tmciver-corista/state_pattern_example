@@ -2,6 +2,7 @@ require 'test/unit'
 require_relative '../lib/pathology_case'
 require_relative '../lib/pending_state'
 require_relative '../lib/diagnosed_state'
+require_relative '../lib/closed_state'
 
 class TestCase < Test::Unit::TestCase
 	def setup
@@ -45,5 +46,19 @@ class TestCase < Test::Unit::TestCase
 
 		# verify that the case is in the 'complete' state
 		assert(@aCase.state.instance_of?(AssignedState))
+	end
+
+	def testCloseCase
+		# assign the case
+		@aCase.assign("Dr. Fine")
+
+		# provide a diagnosis
+		@aCase.diagnose("Patient has a bad cold.")
+
+		# close the case
+		@aCase.close
+
+		# verify that the case is in the 'complete' state
+		assert(@aCase.state.instance_of?(ClosedState))
 	end
 end
