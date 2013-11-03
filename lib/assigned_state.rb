@@ -1,8 +1,8 @@
 require_relative 'state'
 
 class AssignedState < State
-	def initialize(case)
-		@case = case
+	def initialize(aCase)
+		@aCase = aCase
 	end
 
 	def edit
@@ -13,6 +13,6 @@ class AssignedState < State
 		# diagnose
 
 		# transition to the 'diagnosed' state
-		@case.state = DiagnosedState.new(@case)
+		@aCase.state = DiagnosedState.new(@aCase)
 	end
 end
