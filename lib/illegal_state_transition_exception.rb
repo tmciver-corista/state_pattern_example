@@ -1,0 +1,2 @@
+class IllegalStateTransitionException < StandardError
+end
