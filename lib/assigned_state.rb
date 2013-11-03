@@ -1,4 +1,5 @@
 require_relative 'state'
+require_relative 'diagnosed_state'
 
 class AssignedState < State
 	def initialize(aCase)

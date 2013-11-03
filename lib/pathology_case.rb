@@ -17,7 +17,7 @@ class Case
 	end
 
 	def diagnose(diagnosis)
-		@state.diagnose
+		@state.diagnose(diagnosis)
 	end
 
 	def close
