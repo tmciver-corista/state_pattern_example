@@ -84,4 +84,9 @@ class TestCase < Test::Unit::TestCase
 		# try to diagnose the case from the 'pending' state
 		assert_raises(IllegalStateTransitionException) { @aCase.diagnose("Patient has a bad cold.") }
 	end
+
+	def testPendingToClosedException
+		# try to close the case from the 'pending' state
+		assert_raises(IllegalStateTransitionException) { @aCase.close }
+	end
 end
