@@ -45,7 +45,6 @@ class TestCase < Test::Unit::TestCase
 		# reopen
 		@aCase.reopen
 
-		# verify that the case is in the 'complete' state
 		assert(@aCase.state.instance_of?(AssignedState))
 	end
 
